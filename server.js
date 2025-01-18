@@ -2,6 +2,21 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import bcrypt from'bcrypt-nodejs';
 import cors from 'cors';
+import knex from 'knex';
+
+const postgres = knex({
+    client: 'pg',
+    connection: {
+        host: '127.0.0.1',
+        user: '',
+        password: '',
+        database: 'smart-brain'
+    }
+});
+
+console.log(postgres.select('*').from('users'));
+
+
 
 const app = express();
 app.use(bodyParser.json());
